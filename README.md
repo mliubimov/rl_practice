@@ -1,4 +1,4 @@
-# rl_practice
+# RL practice
 This repository contains a set of algorithms and gyms for educational purposes and reinforcement learning experiments. The primary goal is to implement everything from scratch to gain a deeper understanding of RL.
 
 <p align="center">
@@ -20,7 +20,7 @@ TODO:
  - PPO (Proximal Policy Optimization) implementation
 
 ## Install
-I use python 3.10 and following packages
+Use python 3.10 and following packages:
 ```
 $ pip install -r requirements.txt
 ```
