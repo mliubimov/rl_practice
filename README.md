@@ -44,3 +44,18 @@ Test:
 ```
 python run.py --param_file ./configs/double_dqn_snake.yaml --mode test --display
 ```
+### Results
+<p align="center">
+  <div style="display:inline-block; text-align:center; margin: 10px;">
+    <p>DQN Result</p>
+    <img src="./img/dqn_res.png" alt="snake dqn" width="250"/>
+  </div>
+  <div style="display:inline-block; text-align:center; margin: 10px;">
+    <p>Double DQN Result</p>
+    <img src="./img/double_dqn_res.png" alt="snake double dqn" width="250"/>
+  </div>
+  <div style="display:inline-block; text-align:center; margin: 10px;">
+    <p>Dueling DQN Result</p>
+    <img src="./img/dueling_dqn_res.png" alt="snake dueling dqn" width="250"/>
+  </div>
+</p>
