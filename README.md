@@ -1,9 +1,10 @@
 # rl_practice
 This repository contains a set of algorithms and gyms for educational purposes and reinforcement learning experiments. The primary goal is to implement everything from scratch to gain a deeper understanding of RL.
 
-![snake start](img/snake_begining.gif.gif)
-
-![snake result](img/snake_res.gif.gif)
+<p align="center">
+  <img src="https://github.com/mliubimov/rl_practice/blob/master/img/snake_begining.gif" alt="snake start" width="400"/>
+  <img src="https://github.com/mliubimov/rl_practice/blob/master/img/snake_res.gif" alt="snake result" width="400"/>
+</p>
 
 Algorithms:
  - DQN
