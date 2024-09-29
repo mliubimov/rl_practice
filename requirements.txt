@@ -1,0 +1,9 @@
+pygame==2.0.0
+tqdm==1.0.0
+numpy==1.23.4
+pyyaml
+seaborn==0.10.1
+matplotlib==3.2.0
+torch==2.4.1
+tensorboard==2.17.1
+dash==2.18.1

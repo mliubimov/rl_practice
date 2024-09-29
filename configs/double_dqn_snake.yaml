@@ -1,0 +1,54 @@
+
+
+
+game: snakeGame
+window_width: 440
+window_height: 440
+agent: DoubleDQNAgent
+state_collector: snakeBasicStateCollector
+model: LinearModel
+reward_function: SnakeReward
+epsilon_decay_linear: 0.8992408828056275
+learning_rate: 0.004119216728359001
+first_layer_size: 128
+second_layer_size: 128
+third_layer_size: 256
+episodes: 500
+val_episodes: 10
+num_iteration: 100
+memory_size: 9000
+batch_size: 3000
+target_update_frequency: 40
+learning_rate_step_size: 500
+load_weights: False
+weights_path: "weights/double_dqn_weights.h5"
+train: true
+test: false
+speed: 5000
+run_name: double_dqn_snake
+gamma: 0.9
+is_tf_logger_active: true
+device: 'cuda:0'
+
+
+
+
+#parameters tunning:
+optuna_params: {
+  learning_rate: ["continuous", [0.00005, 0.01]],
+  first_layer_size: ["discrete", [20, 50, 100, 128, 200, 256, 300, 400, 500, 512, 600, 1024]],
+  target_update_frequency: ["discrete",[2,5,10,15,20,25,30,40,50,60,70,80]],
+  second_layer_size: ["discrete", [20, 50, 100, 128, 200, 256, 300, 400, 500, 512, 600, 1024]],
+  third_layer_size: ["discrete", [20, 50, 100, 128, 200, 256, 300, 400, 500, 512, 600, 1024]],
+  #episodes: ["discrete", [20, 50, 100, 200, 300, 400, 500, 600,700,800,900,1000,1100,1200,1300,1400]],
+  epsilon_decay_linear: ["continuous",  [0.002, 1.0]],
+  learning_rate_step_size: ["discrete", [1, 10, 100, 300, 500, 1000, 2000, 3000, 10000]]
+
+
+}
+params_search_criteria: "top_ten_scores" #test_mean and top_ten_scores
+
+plot_optimization_results: true
+n_trials: 200
+study_name: "RL_study"
+storage_path: "sqlite:///optuna_study_double_dqn.db"

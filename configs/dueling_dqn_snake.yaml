@@ -1,0 +1,58 @@
+
+
+
+game: snakeGame
+window_width: 420
+window_height: 420
+agent: DuelingDQNAgent
+state_collector: snakeBasicStateCollector
+model: DuelingNoisyLinearModel
+reward_function: SnakeReward
+epsilon_decay_linear: 0.05
+learning_rate: 0.0079872065961305
+first_layer_size: 1024
+second_layer_size: 400
+third_layer_size: 1024
+episodes: 500
+val_episodes: 10
+num_iteration: 200
+memory_size: 35000
+batch_size: 1000
+target_update_frequency: 200
+learning_rate_step_size: 3000
+load_weights: False
+weights_path: "weights/dueling_dqn_weights.h5"
+train: true
+test: false
+noisy_linear_sigma: 0.702662638376929
+gradient_clip_value: 7.125268803081374
+speed: 100000
+run_name: dueling_dqn_snake
+gamma: 0.9382897619571501
+gamma_n_learning: 0.9
+is_tf_logger_active: true
+device: 'cuda:0'
+n_step: 35
+
+
+
+
+#parameters tunning:
+optuna_params: {
+  gradient_clip_value: ["continuous", [6.0,15.0]],
+  noisy_linear_sigma: ["continuous", [0.6,0.9]],
+  learning_rate: ["continuous", [0.00005, 0.01]],
+  first_layer_size: ["discrete", [20, 50, 100, 128, 200, 256, 300, 400, 500, 512, 600, 1024]],
+  target_update_frequency: ["discrete",[15,20,25,30,40,50,60,70,80,100,150,200]],
+  second_layer_size: ["discrete", [20, 50, 100, 128, 200, 256, 300, 400, 500, 512, 600, 1024]],
+  third_layer_size: ["discrete", [20, 50, 100, 128, 200, 256, 300, 400, 500, 512, 600, 1024]],
+  learning_rate_step_size: ["discrete", [1, 10, 100, 300, 500, 1000, 2000, 3000, 10000]],
+  n_step: ["discrete", [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,20,25,30,35,40,45]],
+  gamma:  ["continuous", [0.5,0.9999]],
+}
+params_search_criteria: "top_ten_scores" #test_mean and top_ten_scores
+
+plot_optimization_results: true
+n_trials: 200
+study_name: "RL_study"
+storage_path: "sqlite:///optuna_study_dueling.db"

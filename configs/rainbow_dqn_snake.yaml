@@ -1,0 +1,60 @@
+
+
+
+game: snakeGame
+window_width: 440
+window_height: 440
+agent: RainbowDQNAgent
+state_collector: snakeBasicStateCollector
+model: DuelingNoisyLinearModel
+reward_function: SnakeReward
+epsilon_decay_linear: 0.01495750728917451
+learning_rate: 0.007113540210899352
+first_layer_size: 50
+second_layer_size: 512
+third_layer_size: 256
+episodes: 500
+val_episodes: 10
+num_iteration: 200
+memory_size: 9000
+batch_size: 128
+target_update_frequency: 30
+learning_rate_step_size: 10000
+noisy_linear_sigma: 0.33794522804721033
+gradient_clip_value: 11.425438907318037
+load_weights: False
+weights_path: "weights/double_dqn_weights.h5"
+train: true
+test: false
+speed: 5000
+
+is_tf_logger_active: true
+device: 'cuda:0'
+
+v_min: 0.0
+v_max: 200.0
+atom_size: 51
+
+n_step: 3
+gamma: 0.6
+
+#parameters tunning:
+optuna_params: {
+  gradient_clip_value: ["continuous", [6.0,15.0]],
+  noisy_linear_sigma: ["continuous", [0.3,0.9]],
+  learning_rate: ["continuous", [0.00005, 0.01]],
+  first_layer_size: ["discrete", [20, 50, 100, 128, 200, 256, 300, 400, 500, 512, 600, 1024]],
+  target_update_frequency: ["discrete",[15,20,25,30,40,50,60,70,80,100,150,200]],
+  second_layer_size: ["discrete", [20, 50, 100, 128, 200, 256, 300, 400, 500, 512, 600, 1024]],
+  third_layer_size: ["discrete", [20, 50, 100, 128, 200, 256, 300, 400, 500, 512, 600, 1024]],
+  #episodes: ["discrete", [20, 50, 100, 200, 300, 400, 500, 600,700,800,900,1000,1100,1200,1300,1400]],
+  #epsilon_decay_linear: ["continuous",  [0.002, 1.0]],
+  learning_rate_step_size: ["discrete", [1, 10, 100, 300, 500, 1000, 2000, 3000, 10000]]
+  
+}
+params_search_criteria: "top_ten_scores" #test_mean and top_ten_scores
+
+plot_optimization_results: true
+n_trials: 200
+study_name: "RL_study"
+storage_path: "sqlite:///optuna_study_rainbow.db"
